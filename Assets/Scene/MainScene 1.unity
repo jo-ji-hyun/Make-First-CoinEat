@@ -1772,7 +1772,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 60.00
+  m_Text: 40.00
 --- !u!222 &623951347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4456,8 +4456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16107c441478f154e8f38b4c7ab09817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 1
   rb: {fileID: 2129793898}
+  speed: 3
+  direction: 1
   jumpForce: 5.5
   leftLimit: -2.6
   rightLimit: 2.6

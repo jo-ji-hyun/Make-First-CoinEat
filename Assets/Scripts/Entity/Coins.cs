@@ -44,6 +44,7 @@ public class Coins : MonoBehaviour
         
     }
 
+    // === 面倒矫 贸府 肺流 ===
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ground"))
