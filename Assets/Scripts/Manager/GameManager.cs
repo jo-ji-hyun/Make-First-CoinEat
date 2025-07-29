@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Coin;
     public GameObject Enemy;
-    public static GameManager Instance;
+    public static GameManager Instance; // 싱글톤 선언
 
     public Text totalScoreTxt;
     public Text Score;
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public AudioClip Clear;
 
     public bool isgameover = false;      public bool isvictory = false;
+
     void Start()
     {
         InvokeRepeating("MakeCoin", 0, 0.8f);
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
         {
             totalTime -= Time.deltaTime;
         }
-        else if(Life >= 1)
+        else if(Life >= 1) // 다음 스테이지 로
         {
             if (isvictory) return;
             isvictory = true;
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
 
         TimeT.text = totalTime.ToString("N2");
 
-        if (totalTime > 0f && Life == 0)
+        if (totalTime > 0f && Life == 0) // 게임 오버 조건
         {
             GameOver();
         }
@@ -204,6 +205,8 @@ public class GameManager : MonoBehaviour
             BestScore.text = HighScore.ToString();
         }
 
+        // === 스킬 ===
+
         if (isSkill == true) return;
 
         Skill += score / 5;
@@ -223,6 +226,7 @@ public class GameManager : MonoBehaviour
             skillgauge.localScale = new Vector3(Skill, 1.0f, 1.0f);
 
     }
+
     IEnumerator HidePopup()
     {
         yield return new WaitForSeconds(0.5f); 
@@ -230,6 +234,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // === 스킬 사용시 ===
     public void UseSkill()
     {
         if (!isSkill) return;
@@ -240,6 +245,7 @@ public class GameManager : MonoBehaviour
         skillgauge.localScale = new Vector3(Skill, 1.0f, 1.0f);
     }
 
+    // === Life ===
     public void Charaterlife()
     {
         if ( Life == 2 )

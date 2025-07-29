@@ -9,6 +9,7 @@ public class RetryButton : MonoBehaviour
 
     private static string currentSceneNameBeforeRetry = "";
 
+    // === 씬 로드 ===
     void Awake()
     {
         if (Instance == null)
@@ -30,7 +31,6 @@ public class RetryButton : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name.StartsWith("MainScene")) 
@@ -39,6 +39,7 @@ public class RetryButton : MonoBehaviour
         }
     }
 
+    // === 다시하기 ===
     public void Retry()
     {
 
@@ -52,6 +53,7 @@ public class RetryButton : MonoBehaviour
         }
     }
 
+    // === 다음 스테이지 ===
     public void NextStage()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -62,7 +64,7 @@ public class RetryButton : MonoBehaviour
         }
         else if (currentScene == "MainScene 1")
         {
-            SceneManager.LoadScene("StartScene 2");
+            SceneManager.LoadScene("MainScene 2");
         }
         else 
         {
@@ -70,6 +72,7 @@ public class RetryButton : MonoBehaviour
         }
     }
 
+    // === 이전 스테이지 ===
     public void BackStage()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -88,10 +91,13 @@ public class RetryButton : MonoBehaviour
         }
     }
 
+    // === 패배시 ===
     public void Lose()
     {
         SceneManager.LoadScene("DefeatScene");
     }
+
+    // === 메인으로 ===
     public void Home()
     {
         SceneManager.LoadScene("StartScene");

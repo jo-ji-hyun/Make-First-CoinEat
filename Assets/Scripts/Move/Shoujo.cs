@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Shoujo : MonoBehaviour
 {
-    public int direction = 1;
-    private float speed = 3.0f;
     public Rigidbody2D rb;
+
+    [SerializeField] private float speed = 3.0f;
+
+    public int direction = 1;
     public float jumpForce = 5.5f;
     public float leftLimit = -2.6f;
     public float rightLimit = 2.6f;
@@ -26,12 +28,12 @@ public class Shoujo : MonoBehaviour
 
    void Update()
     { 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // 점프
         {
             direction *= -1;
             rederer.flipX = !rederer.flipX;
         }
-        if (Input.GetMouseButton(1) && isGrounded)
+        if (Input.GetMouseButton(1) && isGrounded) // 방향 전환
         {
             Vector2 currentVelocity = rb.velocity;
 
@@ -50,18 +52,19 @@ public class Shoujo : MonoBehaviour
             rederer.flipX = false;
         }
 
-        if (isGrounded)
+        if (isGrounded) // 땅에있을시 이동
         {
             transform.position = (Vector2)transform.position + new Vector2(direction * speed * Time.deltaTime, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isBoosting == false && GameManager.Instance.isSkill == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isBoosting == false && GameManager.Instance.isSkill == true) // 스킬 사용
         {
             StartCoroutine(SpeedBoost());
         }
 
     }
 
+    // === 중력 제어 ===
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
@@ -70,6 +73,8 @@ public class Shoujo : MonoBehaviour
         }
 
     }
+
+    // === 스킬 발동 ===
     IEnumerator SpeedBoost()
     {
         isBoosting = true;

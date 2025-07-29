@@ -22,11 +22,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        
-    }
-
+    // === Ãæµ¹½Ã ===
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ground"))
