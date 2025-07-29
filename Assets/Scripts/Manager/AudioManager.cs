@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip clip;
     public AudioClip clip2;
-
+    public AudioClip clip3;
 
     private void Awake()
     {
@@ -62,6 +62,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case "MainScene 1": 
                 clipToPlay = clip2;
+                break;
+            case "MainScene 2": 
+                clipToPlay = clip2;
+                break;
+            case "BossScene": 
+                clipToPlay = clip3;
                 break;
                 // 새로운 씬 추가시 추가해야함
 

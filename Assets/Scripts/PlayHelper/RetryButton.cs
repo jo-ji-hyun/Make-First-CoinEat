@@ -66,6 +66,11 @@ public class RetryButton : MonoBehaviour
         {
             SceneManager.LoadScene("MainScene 2");
         }
+        else if (currentScene == "MainScene 2")
+        {
+            Debug.Log("¡ÿ∫Ò¡ﬂ");
+           // SceneManager.LoadScene("BossScene");
+        }
         else 
         {
             SceneManager.LoadScene("MainScene");
